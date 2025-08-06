@@ -1,0 +1,7 @@
+node_modules
+songs
+
+.env
+pnpm-lock.yaml
+pnpm-workspace.yaml
+*:Zone.Identifier
