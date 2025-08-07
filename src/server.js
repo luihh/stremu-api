@@ -8,7 +8,7 @@ const routes = require('./routes');
 
 app.use(express.json()).use(morgan('dev')).use(cors());
 
-app.use('/', routes);
+app.use('/api', routes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, async () => {
