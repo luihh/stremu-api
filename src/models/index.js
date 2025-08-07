@@ -5,10 +5,18 @@ const Album = require('./Album');
 const Song = require('./Song');
 
 Artist.hasMany(Album);
-Album.belongsTo(Artist);
+Album.belongsTo(Artist, {
+  foreignKey: {
+    allowNull: false,
+  },
+});
 
 Artist.hasMany(Song);
-Song.belongsTo(Artist);
+Song.belongsTo(Artist, {
+  foreignKey: {
+    allowNull: false,
+  },
+});
 
 Album.hasMany(Song);
 Song.belongsTo(Album);
