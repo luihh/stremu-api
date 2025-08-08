@@ -1,7 +1,14 @@
-import { DataTypes } from 'sequelize';
+import { DataTypes, Model } from 'sequelize';
 import db from '../db.js';
 
-const Album = db.define(
+interface AlbumModel extends Model {
+  id: number;
+  title: string;
+  releaseYear: number;
+  artistId: number;
+}
+
+const Album = db.define<AlbumModel>(
   'album',
   {
     title: {
@@ -12,9 +19,19 @@ const Album = db.define(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    artistId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   },
   {
     timestamps: false,
+    indexes: [
+      {
+        unique: true,
+        fields: ['title', 'artistId'],
+      },
+    ],
   }
 );
 

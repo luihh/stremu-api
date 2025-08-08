@@ -1,7 +1,12 @@
-import { DataTypes } from 'sequelize';
+import { DataTypes, Model } from 'sequelize';
 import db from '../db.js';
 
-const Artist = db.define(
+interface ArtistModel extends Model {
+  id: number;
+  name: string;
+}
+
+const Artist = db.define<ArtistModel>(
   'artist',
   {
     name: {
