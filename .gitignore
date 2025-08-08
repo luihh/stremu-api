@@ -1,5 +1,5 @@
-node_modules
-./songs
+/node_modules
+/songs
 
 .env
 pnpm-lock.yaml
