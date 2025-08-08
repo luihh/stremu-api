@@ -1,6 +1,7 @@
 /node_modules
 /.vscode
 /songs
+/temp
 
 .env
 pnpm-lock.yaml
