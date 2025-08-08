@@ -9,9 +9,10 @@ router.get('/artist/:artistId', async (req: Request, res: Response) => {
   try {
     const { artistId } = req.params;
     const albums = await Album.findAll({ where: { artistId } });
-    res.json(albums);
+    if (!albums) return res.status(404).json({ error: 'Albums not found' });
+    return res.json(albums);
   } catch (err) {
-    res.status(500).json({ error: err });
+    return res.status(500).json({ error: err });
   }
 });
 

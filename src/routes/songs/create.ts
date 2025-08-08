@@ -12,7 +12,7 @@ router.post('/', async (req: Request<{}, {}, SongInput>, res: Response) => {
   try {
     const data = songSchema.parse(req.body);
     const song = await Song.create(data);
-    res.status(201).json(song);
+    return res.status(201).json(song);
   } catch (err: any) {
     if (err instanceof ZodError) {
       return res.status(400).json({ error: err });

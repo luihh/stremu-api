@@ -12,7 +12,7 @@ router.post('/', async (req: Request<{}, {}, AlbumInput>, res: Response) => {
   try {
     const data = albumSchema.parse(req.body);
     const album = await Album.create(data);
-    res.status(201).json(album);
+    return res.status(201).json(album);
   } catch (err: any) {
     if (err instanceof ZodError) {
       return res.status(400).json({ error: err });

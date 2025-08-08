@@ -8,12 +8,11 @@ const router: Router = express.Router();
 router.get('/artist/:artistId', async (req: Request, res: Response) => {
   try {
     const { artistId } = req.params;
-    const songs = await Song.findAll({
-      where: { artistId },
-    });
-    res.json(songs);
+    const songs = await Song.findAll({ where: { artistId } });
+    if (!songs) return res.status(404).json({ error: 'Songs not found' });
+    return res.json(songs);
   } catch (err) {
-    res.status(500).json({ error: err });
+    return res.status(500).json({ error: err });
   }
 });
 
