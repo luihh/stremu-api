@@ -1,11 +1,17 @@
 import { DataTypes } from 'sequelize';
 import db from '../db.js';
 
-const Song = db.define('song', {
-  title: {
-    type: DataTypes.STRING,
-    allowNull: false,
+const Song = db.define(
+  'song',
+  {
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   },
-});
+  {
+    timestamps: false,
+  }
+);
 
 export default Song;
