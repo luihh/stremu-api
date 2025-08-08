@@ -1,4 +1,5 @@
 import express from 'express';
+import { ZodError } from 'zod';
 import { Artist } from '../../models/index.js';
 import { artistSchema } from '../../schemas/artist.js';
 
@@ -13,10 +14,11 @@ router.post('/', async (req: Request<{}, {}, ArtistInput>, res: Response) => {
     const artist = await Artist.create(data);
     res.status(201).json(artist);
   } catch (err: any) {
-    if (err.name === 'ZodError') {
-      return res.status(400).json({ errors: err.errors });
+    if (err instanceof ZodError) {
+      return res.status(400).json({ error: err });
     }
-    res.status(400).json({ error: err.message });
+
+    return res.status(500).json({ error: err });
   }
 });
 
