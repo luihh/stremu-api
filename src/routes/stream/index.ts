@@ -1,12 +1,14 @@
-const express = require('express');
-const fs = require('node:fs');
-const path = require('node:path');
+import express, { Router } from 'express';
+import fs from 'node:fs';
 
-const router = express.Router();
+const router: Router = express.Router();
 
 router.get('/:filename', (req, res) => {
   const fileName = req.params.filename;
-  const filePath = path.join(__dirname, '../../../songs', fileName);
+  const { pathname: filePath } = new URL(
+    `../../../songs/${fileName}`,
+    import.meta.url
+  );
 
   fs.stat(filePath, (err, stats) => {
     if (err) {
@@ -34,4 +36,4 @@ router.get('/:filename', (req, res) => {
   });
 });
 
-module.exports = router;
+export default router;

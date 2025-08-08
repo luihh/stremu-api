@@ -1,5 +1,5 @@
-const { DataTypes } = require('sequelize');
-const db = require('../db');
+import { DataTypes } from 'sequelize';
+import db from '../db.js';
 
 const Song = db.define('song', {
   title: {
@@ -8,4 +8,4 @@ const Song = db.define('song', {
   },
 });
 
-module.exports = Song;
+export default Song;

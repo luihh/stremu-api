@@ -1,8 +1,8 @@
-const db = require('../db');
+import db from '../db.js';
 
-const Artist = require('./Artist');
-const Album = require('./Album');
-const Song = require('./Song');
+import Artist from './Artist.js';
+import Album from './Album.js';
+import Song from './Song.js';
 
 Artist.hasMany(Album);
 Album.belongsTo(Artist, {
@@ -21,9 +21,4 @@ Song.belongsTo(Artist, {
 Album.hasMany(Song);
 Song.belongsTo(Album);
 
-module.exports = {
-  db,
-  Artist,
-  Album,
-  Song,
-};
+export { db, Artist, Album, Song };

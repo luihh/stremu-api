@@ -1,7 +1,7 @@
-const express = require('express');
-const { Artist } = require('../../models');
+import express, { Router } from 'express';
+import { Artist } from '../../models/index.js';
 
-const router = express.Router();
+const router: Router = express.Router();
 
 router.put('/:id', async (req, res) => {
   const artist = await Artist.findByPk(req.params.id);
@@ -11,4 +11,4 @@ router.put('/:id', async (req, res) => {
   res.json(artist);
 });
 
-module.exports = router;
+export default router;

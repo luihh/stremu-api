@@ -1,5 +1,5 @@
-const { DataTypes } = require('sequelize');
-const db = require('../db');
+import { DataTypes } from 'sequelize';
+import db from '../db.js';
 
 const Album = db.define('album', {
   title: {
@@ -12,4 +12,4 @@ const Album = db.define('album', {
   },
 });
 
-module.exports = Album;
+export default Album;

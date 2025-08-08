@@ -1,9 +1,9 @@
-const express = require('express');
-const { Artist } = require('../../models');
+import express, { Router } from 'express';
+import { Artist } from '../../models/index.js';
 
-const router = express.Router();
+const router: Router = express.Router();
 
-router.get('/', async (req, res) => {
+router.get('/', async (_, res) => {
   const artists = await Artist.findAll();
   res.json(artists);
 });
@@ -14,4 +14,4 @@ router.get('/:id', async (req, res) => {
   res.json(artist);
 });
 
-module.exports = router;
+export default router;

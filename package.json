@@ -2,10 +2,12 @@
   "name": "stremu-api",
   "version": "1.0.0",
   "description": "",
-  "main": "src/server.js",
+  "main": "src/server.ts",
+  "type": "module",
   "scripts": {
-    "start": "node --env-file=.env .",
-    "dev": "node --env-file=.env --watch .",
+    "build": "tsc",
+    "start": "node --loader ts-node/esm --env-file=.env .",
+    "dev": "node --loader ts-node/esm --env-file=.env --watch .",
     "dev:resetDB": "docker-compose down -v && docker-compose up -d"
   },
   "keywords": [],
@@ -18,10 +20,18 @@
     "morgan": "^1.10.1",
     "pg": "^8.16.3",
     "pg-hstore": "^2.3.4",
-    "sequelize": "^6.37.7"
+    "sequelize": "^6.37.7",
+    "zod": "^4.0.15"
   },
   "devDependencies": {
-    "standard": "^17.1.2"
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/morgan": "^1.9.10",
+    "@types/node": "^24.2.0",
+    "nodemon": "^3.1.10",
+    "standard": "^17.1.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
   },
   "eslintConfig": {
     "extends": "./node_modules/standard/eslintrc.json"
